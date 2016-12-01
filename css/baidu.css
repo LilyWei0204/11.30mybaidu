@@ -1,0 +1,685 @@
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,input,header,section{
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-style: normal;
+    font-weight: normal;
+}
+body{
+    font-family: "微软雅黑";
+}
+a{
+    text-decoration: none;/*下划线*/
+}
+img{
+    border: 0;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/*头部*/
+header{
+    width: 100%;
+    height: 60px;
+    background: #167bd8;
+    position: fixed;
+    left: 0;
+    top:0;
+    z-index: 1;
+}
+
+/*头部正常布局开始*/
+/*.header{
+    height: 100%;
+}
+.header a{
+    float: left;
+    color: #fff;
+}
+.logo{
+    width:120px;
+    height: 40px;
+    margin-top: 10px;
+    background: url("../img/logo.png") no-repeat 0 0;
+}
+.header .index{
+    padding: 0 20px;
+    line-height: 70px;
+
+}
+.header .index:nth-of-type(2){
+    margin-left: 40px;
+}
+.header .last{
+    padding: 0 20px;
+    line-height: 70px;
+    font-size: 12px;
+}
+
+.header a:nth-of-type(5){
+    margin-left: 200px;
+}*/
+/*头部正常布局结束*/
+
+/*
+弹性布局 弹性盒模型
+flex
+
+用了弹性布局，float不起作用
+1、盒子容器
+   属性：
+   方向：flex-direction:row默认||row-reverse行内排列方向||column从上往下排|| column-reverse从下往上;
+
+   包裹的方式： flex-wrap:nowrap不包裹 || wrap  || warp-reverse从下往上排;
+
+   水平方向排列方式：justify-content:flex-start||flex-end||center居中||space-between两端对齐||space-around两边有留白，最常用的布局;
+
+   垂直对齐：align-items: flex-start靠上||flex-end靠下||center 垂直居中||baseline第一行内容的基线对齐||stretch拉伸;
+
+   对多行内容进行排列：align-content: ;
+
+2、列表   项目
+   属性：
+   前后显示顺序：order:0默认||1
+   分成几份（所占比值放大）：flex-grow: 2;
+   flex-basis: 300px;
+   针对某一个：align-self: flex-start;
+
+*/
+/*头部弹式布局开始*/
+.logo{
+    width:120px;
+    height: 40px;
+    margin-top: 10px;
+    background: url("../img/logo.png") no-repeat 0 0;
+}
+.header{
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.header a{
+    color:#fff;
+    font-size: 14px;
+    line-height: 60px;
+    /*margin-top: 10px;*/
+}
+
+.header .index:hover{
+    color:#16D3F8;
+}
+
+.header .phone i{
+    background: url("../img/logo.png") no-repeat;
+    background-position: -88px -154px;
+    display: inline-block;
+    width: 32px;
+    height: 25px;
+}
+.header .sq{
+    color: #FFDA28;
+}
+.header a:nth-of-type(2){
+    margin-left: 0px;
+}
+.header a:nth-of-type(5){
+    margin-left: 0px;
+}
+.max{
+    display: none;
+}
+.min{
+    position: relative;
+}
+.min .logo{
+    width:120px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 20px;
+    background: url("../img/logo.png") no-repeat 0 0;
+}
+.min .scene{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    perspective: 500px;
+}
+.min .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d ;
+    transform-origin: top;
+}
+.min .menu a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height:40px;
+    color: #fff;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    /*transform: rotateX(90deg);*/
+    border-bottom: 1px solid #ccc;
+    z-index: 1;
+}
+
+
+
+.min .menu-option{
+    width: 20px;
+    height:30px;
+    position: relative;
+    margin-top: 15px;
+    margin-right: 50px;
+    cursor: pointer;
+}
+.min .menu-option-tline{
+    width: 100%;
+    height:2px;
+    position: absolute;
+    top:10px;
+    left: 0;
+    background: #fff;
+    transition: transform .5s ease;
+}
+.min .menu-option-bline{
+    width: 100%;
+    height:2px;
+    position: absolute;
+    top:20px;
+    left: 0;
+    background: #fff;
+    transition: transform .5s ease;
+}
+
+@media screen and (min-width: 1000px){
+    .max{
+        display: flex;
+    }
+    .min{
+        display: none;
+    }
+    .header a:nth-of-type(2){
+        margin-left: 50px;
+    }
+    .header a:nth-of-type(5){
+        margin-left: 120px;
+    }
+    .min .menu-option-tline{
+        transform: translate(0,5px) rotate(45deg);
+        transform-origin: right;
+    }
+    .min .menu-option-bline{
+        transform: translate(0,5px) rotate(-45deg);
+    }
+    .header .index{
+        align-self: center;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+    .header .last{
+        align-self: flex-end;
+        margin-bottom: -15px;
+        font-size: 12px;
+    }
+    .header a{
+        margin-top: 10px;
+    }
+
+    .login{
+        position: absolute;
+        top:20%;right:0;
+        margin: 0 auto;
+        /*width: 340px;*/
+        height: 300px;
+
+        border-radius:5px;
+        background:#4ebffc;
+    }
+
+    .form{
+        position: absolute;
+        /*height: 300px;
+        width: 100%;*/
+        border-radius: 5px;
+        background: #4ebffc;
+        right: 184px;  top: 0;
+    }
+    .ping{
+        width:1000px;
+        height: 100%;
+    }
+
+
+
+}
+
+
+#fullpage{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+#fullpage section{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#fullpage section:nth-child(1){
+    background: url("../img/bg-0.jpg");
+}
+#fullpage section:nth-child(2){
+    background: url("../img/bg-1.jpg");
+}
+#fullpage section:nth-child(3){
+    background: url("../img/bg-2.jpg");
+}
+#fullpage section:nth-child(4){
+    background: url("../img/bg-3.jpg");
+}
+section .top{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+}
+.bg-cloud-1{
+    position: absolute;
+    left:0;top:0;
+    width: 100%;
+    height: 100%;
+    background: url("../img/cloud_1.png") repeat;
+    animation: cloud 30s linear infinite;
+}
+section .middle{
+    position: absolute;
+    left:0;
+    top:50%;
+    width: 100%;
+    height: 100%;
+}
+.bg-cloud-2{
+    position: absolute;
+    left:0;top:-200px;
+    width: 100%;
+    height: 400px;
+    background: url("../img/cloud_2.png") repeat;
+    animation: cloud 30s linear infinite;
+}
+section .bottom{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height: 400px;
+}
+.bg-cloud-3{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    height: 400px;
+    background: url("../img/cloud_3.png") repeat;
+    animation: cloud 30s linear infinite;
+}
+.follow-head{
+    width: 100%;
+    height: 126px;
+    position: absolute;
+    left:0;bottom: 0;
+    background:url("../img/bg-1.jpg")
+}
+.follow-head .center{
+    position: absolute;
+    left:0;top:0;
+    width: 100%;
+}
+.obj-hit-2{
+    position: absolute;
+    width: 63px;
+    height: 78px;
+    background: url(../img/hill_2_540422f.png);
+    right: 35%;
+    top: -13px;
+}
+.obj-hit-3{
+    position:absolute ;
+    width: 260px;
+    height: 175px;
+    background: url(../img/hill_3_ace39fb.png);
+    right: 4%;
+    top: -47px;
+}
+.obj-hit-1{
+    position: absolute;
+    width: 265px;
+    height: 175px;
+    background: url(../img/hill_1_0d79217.png);
+    left: 0px;
+    top: -50px;
+}
+.obj-ship{
+    position: absolute;
+    width: 242px;
+    height: 228px;
+    background: url(../img/ship_1ad6734.png);
+    left:308px;
+    top: -191px;
+}
+.follow-center{
+    position: absolute;
+    left:0;right: 0;
+    margin:0 auto;
+    top:50%;
+    width: 1000px;
+    height: 300px;
+    /*background: red;*/
+}
+/*
+.login{
+    position: absolute;
+    top:20%;right: 0;
+    margin: 0 auto;
+    width: 340px;
+    height: 300px;
+
+    border-radius:5px;
+    background:#4ebffc;
+}
+*/
+@media screen and (max-width: 1000px){
+    .login{
+        position: absolute;
+        top:0;right: 0;
+        left:0;
+        bottom:0;
+        margin:auto;
+        width: 340px;
+        height: 300px;
+
+        border-radius:5px;
+        background:#4ebffc;
+    }
+}
+
+.login-center{
+    width:100%;
+    height:291px;
+}
+.login form{
+    padding-top:26px;
+}
+.login-info{
+    padding:25px 20px;
+}
+.user,.pass{
+    width:299px;
+    height:40px;background:#fff;
+    margin-bottom:20px;
+}
+.login-info span{
+    display:inline-block;
+    width:14px;
+    height:14px;
+    margin:12px 3px 0 10px;
+    background:url(../img/icons.png) no-repeat;
+    background-position: -124px -12px;
+    font-size:16px;
+}
+input{
+    border:none;
+    color:#999;
+}
+.login-info .pass span{
+    background-position:-140px -12px ;
+}
+.token{
+    width:300px;
+    height:39px;
+    margin-bottom:20px;
+}
+.token input{
+    box-sizing: border-box;
+    width:122px;height:38px;padding-left:5px;
+}
+.login-action{
+    width:340px;
+    height:86px;
+    padding:0 20px;
+}
+.submit{
+    width:299px;
+    height:35px;
+    background:#ffd850;
+    color:#5c4c12;
+    border-radius:2px;
+    vertical-align: middle;
+    text-align: center;
+    font-size:20px;
+}
+.other{
+    margin: 12px 0 8px;
+    font-size: 12px;
+    color: #9dbcdb;
+    overflow: hidden;
+}
+.fl{
+    float:left;line-height: 22px;
+}
+.fl span{
+    display:inline-block;
+    width:15px;
+    height:17px;
+    background:url(../img/icons.png)no-repeat -203px -75px;
+    vertical-align: middle;
+    /*margin:2px 4px 0 0;*/
+}
+
+.fr{
+    float:left;
+    margin-top:4px;
+    margin-left:100px;
+}
+.arrow{
+    width:30px;
+    height:26px;
+    background: url(../img/arrow_aad9b25.png);
+    position:absolute;
+    left:0;right:0;
+    margin:0 auto;
+    bottom:50px;
+    animation:slip 1s linear infinite;
+    z-index: 3;
+}
+
+@media screen and (max-width: 1000px){
+    .form{
+        position: absolute;
+        height: 300px;
+        width: 340px;
+        border-radius: 5px;
+        background: #4ebffc;
+        right: 0;  top: 0;  left:0;  bottom: 0;
+        margin: auto;
+    }
+}
+
+.obj-launch{
+    position: absolute;
+    width: 501px;
+    height: 158px;
+    background: url(../img/launch_deea86c.png);
+    left: 13%;
+    top: -210px;
+}
+.obj-flight {
+    position: absolute;
+    width: 119px;
+    height: 78px;
+    background: url(../img/flight_ade8ee2.png);
+    left: 35%;
+    top: -210px;
+    animation: fly 2s linear infinite;
+}
+/*第二屏开始*/
+@media screen and (max-width: 1000px){
+    .ping{
+        width:500px;
+        height: 100%;
+    }
+}
+
+.box2{
+    position: relative;
+    width:100%;
+    height: 100%;
+    left:0;right: 0;
+    margin:0 auto;
+    top:50%;
+}
+
+.title{
+    /*width: 100%;
+    height: 100%;*/
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+@media screen and (max-width: 1000px){
+
+}
+
+.title .p-ain{
+    background: url(../img/h_lingxian_221f2d8.png) no-repeat;
+    width: 66px;
+    height: 126px;
+    text-indent: -9999em;
+    float: left;
+    margin-top: -100px;
+    animation: ling 2s linear infinite;
+}
+.text{
+    margin-top: -100px;
+    margin-left: 20px;
+    float: left;
+}
+.text h4{
+    width: 414px;
+    height: 48px;
+    display: block;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 48px;
+    margin-bottom: 6px;
+    color: #fff;
+}
+.text p{
+    color:#fff;
+    height: 64px;
+    width: 414px;
+    font-size: 19px;
+    letter-spacing: 1px;
+    line-height: 32px;
+    opacity: .8;
+}
+.obj-brain {
+    position: absolute;
+    width: 444px;
+    height: 427px;
+    background: url(../img/brain_36a156f.png);
+    right: 36px;
+    top: -200px;
+
+}
+.box2-bottom{
+    width: 100%;
+    position: absolute;
+    left:0;
+    bottom: 0;
+}
+.section2-bottom-center{
+    width: 1000px;
+    /*height: 100%;*/
+    position: absolute;
+    left:0;right: 0;
+    margin: 0 auto;
+    bottom: 0;
+}
+.square1{
+    position: absolute;
+    bottom: 0;
+    background: #35b568;
+    left: 70px;
+    width: 44px;
+    height: 44px;
+}
+.square2{
+    position: absolute;
+    display: block;
+    width: 88px;
+    height: 88px;
+    background: #4ac179;
+    left: 158px;
+    bottom: 0;
+}
+.square3{
+    position: absolute;
+    bottom: 0;
+    background: #8ae75a;
+    left: 246px;
+    width: 44px;
+    height: 44px;
+}
+.square4{
+    position: absolute;
+    bottom: 0;
+    background: #8ae75a;
+    right: 328px;
+    width: 44px;
+    height: 44px;
+}
+.square5{
+    position: absolute;
+    bottom: 0;
+    background: #4ac179;
+    right: 240px;
+    width: 44px;
+    height: 44px;
+}
+.title .p-ain1{
+    background: url("../img/h_quanmian_8f813d2.png") no-repeat;
+}
+.obj-brain1{
+    background: url("../img/allside_e8abd12.png") no-repeat;
+}
+.title .p-ain2{
+    background: url("../img/h_zhuanye_256a94d.png") no-repeat;
+}
+.obj-brain2{
+    background: url("../img/stat_8934528.png") no-repeat;
+}
+.box2-bottom{
+    height: 138px;
+    background: url("../img/bg-3-head_b8a3f7f.png");
+}
+
+
+
+

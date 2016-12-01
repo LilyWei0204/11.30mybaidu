@@ -1,0 +1,50 @@
+@keyframes menu {
+    0%{
+        opacity: 0;transform:rotateX(90deg);
+    }
+    100%{
+        opacity: 1;transform:rotateX(0deg);
+    }
+}
+@keyframes menu1 {
+    0%{
+        opacity: 1;transform: rotateX(0deg);
+    }
+    100%{
+        opacity: 0;transform: rotateX(90deg);
+    }
+}
+@keyframes cloud {
+    0%{
+        /*transform: translate(-100px,0)*/
+        background-position: 500px 0;
+    }
+    50%{
+        /*transform: translate(0,0)*/
+        background-position: 0px 0;
+    }
+    100%{
+        /*transform: translate(100px,0)*/
+        background-position: -500px 0;
+    }
+}
+@keyframes fly{
+    0%{
+        top:-230px;
+    }
+    50%{
+        top:-210px;
+    }
+    100%{
+        top:-230px;
+    }
+}
+@keyframes ling{
+    0%{
+        transform: translate(0,0) rotateY(0deg);
+    }
+    100%{
+        transform: translate(0,0) rotateY(360deg);
+    }
+
+}
